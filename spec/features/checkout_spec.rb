@@ -14,6 +14,8 @@ describe 'Checkout', js: true do
   let!(:payment_method) { create(:check_payment_method) }
   let!(:zone) { create(:zone) }
   
+  let!(:store) { create(:store) }
+  
   before do
     handling_calculator.set_preference(:first_item, 1.90)
     handling_calculator.set_preference(:additional_item, 0.40)
