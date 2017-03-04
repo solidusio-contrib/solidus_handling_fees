@@ -6,13 +6,7 @@ require 'spree/testing_support/extension_rake'
 
 RSpec::Core::RakeTask.new
 
-task :default do
-  if Dir["spec/dummy"].empty?
-    Rake::Task[:test_app].invoke
-    Dir.chdir("../../")
-  end
-  Rake::Task[:spec].invoke
-end
+task default: [:spec]
 
 desc 'Generates a dummy app for testing'
 task :test_app do
