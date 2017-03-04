@@ -15,8 +15,8 @@ describe 'Checkout', js: true do
   let!(:zone) { create(:zone) }
   
   before do
-    handling_calculator.set_preference(first_item: 1.90)
-    handling_calculator.set_preference(additional_item: 0.40)
+    handling_calculator.set_preference(:first_item, 1.90)
+    handling_calculator.set_preference(:additional_item, 0.40)
     stock_location.stock_items.update_all(count_on_hand: 10)
   end
 
