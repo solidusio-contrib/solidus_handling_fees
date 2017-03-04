@@ -11,9 +11,9 @@ Spree::ItemAdjustments.class_eval do
       end
 
       item.update_columns(
-        :handling_total => handling_total,
-        :adjustment_total => item.adjustment_total + handling_total,
-        :updated_at => Time.now
+        handling_total: handling_total,
+        adjustment_total: item.adjustment_total + handling_total,
+        updated_at: Time.now
       )
     end
   end
