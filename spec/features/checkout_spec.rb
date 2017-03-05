@@ -67,6 +67,8 @@ describe 'Checkout', js: true do
 
     add_to_cart("RoR Mug")
     click_button "Checkout"
+    click_button "Save and Continue"
+    click_button "Save and Continue"
     page.should have_content("Handling $2.30")
   end
 
