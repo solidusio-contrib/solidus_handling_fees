@@ -1,9 +1,9 @@
 Spree::ItemAdjustments.class_eval do
   module OverrideItemAdjustments
-    def update_adjustments
+    def update
       super
 
-      @item.handling_total = adjustments.handling.reload.map(&:update!).compact.sum
+      @item.handling_total = adjustments.select(&:handling?).map(&:update!).compact.sum
       @item.adjustment_total += @item.handling_total
 
       @item.update_columns(
