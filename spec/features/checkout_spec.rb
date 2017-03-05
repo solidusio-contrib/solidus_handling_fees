@@ -32,6 +32,7 @@ describe 'Checkout', js: true do
     page.should have_content("Handling $1.90")
 
     click_on "Save and Continue"
+    click_on "Place Order"
     expect(current_path).to match(spree.order_path(Spree::Order.last))
   end
 
@@ -49,6 +50,7 @@ describe 'Checkout', js: true do
     page.should have_content("Handling $2.70")
 
     click_on "Save and Continue"
+    click_on "Place Order"
     expect(current_path).to match(spree.order_path(Spree::Order.last))
   end
 
