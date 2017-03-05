@@ -6,7 +6,7 @@ describe 'Checkout', js: true do
   let!(:alabama) { create(:state, name: "Alabama", abbr: "AL", country: usa) }
   let!(:washington) { create(:state, name: "Washington", abbr: "WA", country: usa) }
 
-  let!(:handling_calculator) { Spree::Calculator::Shipping::FlexiRate.create! }
+  let!(:handling_calculator) { create(:calculator, type: Spree::Calculator::Shipping::FlexiRate, preferences: { first_item: 1.90, additional_item: 0.40 }) }
   let!(:shipping_calculator) { create(:calculator) }
   let!(:shipping_method) { create(:shipping_method, tax_category_id: 1, calculator: shipping_calculator) }
   let!(:stock_location) { create(:stock_location, country_id: stock_location_address.country.id, state_id: stock_location_address.state.id, address1: stock_location_address.address1, city: stock_location_address.city, zipcode: stock_location_address.zipcode, calculator: handling_calculator) }
@@ -17,8 +17,6 @@ describe 'Checkout', js: true do
   let!(:store) { create(:store) }
 
   before do
-    handling_calculator.set_preference(:first_item, 1.90)
-    handling_calculator.set_preference(:additional_item, 0.40)
     stock_location.stock_items.update_all(count_on_hand: 10)
   end
 
