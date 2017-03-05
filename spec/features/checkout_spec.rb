@@ -13,9 +13,9 @@ describe 'Checkout', js: true do
   let!(:mug) { create(:product, name: "RoR Mug", price: 10) }
   let!(:payment_method) { create(:check_payment_method) }
   let!(:zone) { create(:zone) }
-  
+
   let!(:store) { create(:store) }
-  
+
   before do
     handling_calculator.set_preference(:first_item, 1.90)
     handling_calculator.set_preference(:additional_item, 0.40)
@@ -64,12 +64,12 @@ describe 'Checkout', js: true do
     click_button "Save and Continue"
     click_button "Save and Continue"
     page.should have_content("Handling $1.90")
-    
+
     add_to_cart("RoR Mug")
-    click_button "Checkout"    
+    click_button "Checkout"
     page.should have_content("Handling $2.30")
   end
-  
+
   def add_to_cart(item_name)
     visit spree.products_path
     click_link item_name
@@ -87,7 +87,7 @@ describe 'Checkout', js: true do
     fill_in "#{fieldname}_zipcode", with: address.zipcode
     fill_in "#{fieldname}_phone", with: address.phone
   end
-  
+
   def stock_location_address
     stock_location_address = Spree::Address.new(
     firstname: "Testing",
@@ -99,7 +99,7 @@ describe 'Checkout', js: true do
     zipcode: "98199-1402",
     phone: "(555) 5555-555")
   end
-  
+
   def alabama_address
     alabama_address = Spree::Address.new(
     firstname: "John",
@@ -111,5 +111,5 @@ describe 'Checkout', js: true do
     zipcode: "36110",
     phone: "(555) 5555-555")
   end
-  
+
 end
