@@ -1,6 +1,22 @@
 Spree::OrderUpdater.class_eval do
 
   module OverrideOrderUpdater
+
+    def recalculate_adjustments
+      update_handling
+      super
+    end
+
+    def update_handling
+      [*line_items, *shipments].each do |item|
+        handling_adjustments = item.adjustments.select(&:handling?)
+
+        handling_adjustments.each(&:update!)
+
+        item.handling_total = handling_adjustments.sum(&:amount)
+      end
+    end
+
     def update_adjustment_total
       super
       # DD: updated merely for consistancy (not used in calculations)
