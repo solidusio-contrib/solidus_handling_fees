@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
 
   s.name        = 'spree_handling_fees'
-  s.version     = '2.1.0'
+  s.version     = '2.2.0'
   s.authors    = ["McSweeney's"]
   s.email     = 'admin@mcsweeneys.net'
   s.homepage  = 'https://www.mcsweeneys.net'
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'solidus_api'
   s.add_dependency 'solidus_backend'
-  s.add_dependency 'solidus_core', '~> 2.1.0'
+  s.add_dependency 'solidus_core', '~> 2.2.0'
 
   s.add_development_dependency 'solidus_frontend'
   s.add_development_dependency 'capybara'
