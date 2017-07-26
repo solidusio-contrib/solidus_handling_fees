@@ -19,7 +19,7 @@ Spree::OrderUpdater.class_eval do
 
     def update_adjustment_total
       super
-      # DD: updated merely for consistancy (not used in calculations)
+      # DD: updated merely for consistency (not used in calculations)
       order.handling_total = shipments.sum(:handling_total)
     end
   end
