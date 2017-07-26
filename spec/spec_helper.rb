@@ -36,7 +36,7 @@ RSpec.configure do |config|
   end
 
   config.color = true
-  config.use_transactional_tests = false
+  config.use_transactional_fixtures = false
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
 end
