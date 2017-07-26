@@ -8,7 +8,7 @@ Spree::OrderUpdater.class_eval do
     end
 
     def update_handling
-      [*line_items, *shipments].each do |item|
+      [*shipments].each do |item|
         handling_adjustments = item.adjustments.select(&:handling?)
 
         handling_adjustments.each(&:update!)
