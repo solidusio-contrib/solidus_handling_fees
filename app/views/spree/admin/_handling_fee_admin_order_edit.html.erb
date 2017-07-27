@@ -1,0 +1,2 @@
+<dt class="order-handling_total <%= "hidden" if @order.handling_total.zero? %>" data-hook='admin_order_tab_handling_total_title'>Handling:</dt>
+<dd class="order-handling_total <%= "hidden" if @order.handling_total.zero? %>" id='handling_total'><%= @order.display_handling_total.to_html %></dd>
