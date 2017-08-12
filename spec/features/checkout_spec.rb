@@ -33,7 +33,7 @@ describe 'Checkout', js: true do
       click_button "Save and Continue"
       click_button "Save and Continue"
       # page.should have_content("Handling $1.90") # TODO: Diagnose missing labels in capybara
-      page.should have_content("Order Total: $21.90")
+      expect(page).to have_content("Order Total: $21.90")
 
       click_on "Save and Continue"
       click_on "Place Order"
@@ -42,12 +42,12 @@ describe 'Checkout', js: true do
       # Verify handling fee from backend
       visit spree.admin_path
       visit spree.edit_admin_order_path(Spree::Order.last)
-      page.find('fieldset#order-total').should have_content("Order Total $21.90")
-      page.find('.js-order-shipment-adjustments').should have_content("Handling: $1.90")
+      expect(page.find('fieldset#order-total')).to have_content("Order Total $21.90")
+      expect(page.find('.js-order-shipment-adjustments')).to have_content("Handling: $1.90")
 
       # TODO: For some reason this override doesn't display in capybara
-      # page.find('dl.additional-info').should have_content("Total:$21.90")
-      # page.find('dl.additional-info').should have_content("Handling: $1.90")
+      # expect(page.find('dl.additional-info')).to have_content("Total:$21.90")
+      # expect(page.find('dl.additional-info')).to have_content("Handling: $1.90")
     end
   end
 
@@ -63,7 +63,7 @@ describe 'Checkout', js: true do
     click_button "Save and Continue"
     click_button "Save and Continue"
     # page.should have_content("Handling $2.70") # TODO: Diagnose missing labels in capybara
-    page.should have_content("Order Total: $42.70")
+    expect(page).to have_content("Order Total: $42.70")
 
     click_on "Save and Continue"
     click_on "Place Order"
@@ -80,14 +80,14 @@ describe 'Checkout', js: true do
     click_button "Save and Continue"
     click_button "Save and Continue"
     # page.should have_content("Handling $1.90") # TODO: Diagnose missing labels in capybara
-    page.should have_content("Order Total: $21.90")
+    expect(page).to have_content("Order Total: $21.90")
 
     add_to_cart("RoR Mug")
     click_button "Checkout"
     click_button "Save and Continue"
     click_button "Save and Continue"
     # page.should have_content("Handling $2.30") # TODO: Diagnose missing labels in capybara
-    page.should have_content("Order Total: $32.30")
+    expect(page).to have_content("Order Total: $32.30")
   end
 
   def add_to_cart(item_name)
