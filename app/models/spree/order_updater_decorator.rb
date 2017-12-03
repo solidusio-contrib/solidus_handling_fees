@@ -11,7 +11,7 @@ Spree::OrderUpdater.class_eval do
       [*shipments].each do |item|
         handling_adjustments = item.adjustments.select(&:handling?)
 
-        handling_adjustments.each(&:update!)
+        handling_adjustments.each(&:recalculate)
 
         item.handling_total = handling_adjustments.sum(&:amount)
       end
