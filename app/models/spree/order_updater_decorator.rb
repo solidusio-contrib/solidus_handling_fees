@@ -1,7 +1,5 @@
 Spree::OrderUpdater.class_eval do
-
   module OverrideOrderUpdater
-
     def recalculate_adjustments
       update_handling
       super
@@ -25,5 +23,4 @@ Spree::OrderUpdater.class_eval do
   end
 
   prepend OverrideOrderUpdater
-
 end

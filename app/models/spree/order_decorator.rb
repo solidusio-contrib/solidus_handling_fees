@@ -1,7 +1,6 @@
 Spree::Order.class_eval do
-
   def display_handling_total
-    Spree::Money.new(handling_total, { currency: currency })
+    Spree::Money.new(handling_total, currency: currency)
   end
 
   # Override if you want to create custom situations for applying the handling charge
@@ -13,18 +12,16 @@ Spree::Order.class_eval do
   # Following 'create_tax_charge!' convention.
   def create_handling_charge!
     shipments.each do |shipment|
-      if shipment.needs_handling_charge? && shipment.stock_location.calculator
-        amount = shipment.stock_location.calculator.compute_shipment(shipment)
-        unless amount == 0
-          shipment.adjustments.create!({
-            source: shipment.stock_location,
-            adjustable: shipment,
-            amount: amount,
-            order: shipment.order,
-            label: "Handling"
-          })
-        end
-      end
+      next unless shipment.needs_handling_charge? && shipment.stock_location.calculator
+      amount = shipment.stock_location.calculator.compute_shipment(shipment)
+      next if amount == 0
+      shipment.adjustments.create!(
+        source: shipment.stock_location,
+        adjustable: shipment,
+        amount: amount,
+        order: shipment.order,
+        label: 'Handling'
+      )
     end
   end
 
@@ -39,5 +36,4 @@ Spree::Order.class_eval do
   end
 
   prepend OverrideOrder
-
 end
