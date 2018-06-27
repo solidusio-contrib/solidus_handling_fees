@@ -1,8 +1,12 @@
-before_script:
-  - "bundle exec rake test_app"
-script: "bundle exec rspec spec"
-notifications:
-  email:
-    - brian.christian@mcsweeneys.net
+sudo: false
+language: ruby
 rvm:
-  - 2.4.2
+  - 2.5.1
+env:
+  matrix:
+    - SOLIDUS_BRANCH=v2.2 DB=postgres
+    - SOLIDUS_BRANCH=v2.3 DB=postgres
+    - SOLIDUS_BRANCH=v2.4 DB=postgres
+    - SOLIDUS_BRANCH=v2.2 DB=mysql
+    - SOLIDUS_BRANCH=v2.3 DB=mysql
+    - SOLIDUS_BRANCH=v2.4 DB=mysql
