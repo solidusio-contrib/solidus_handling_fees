@@ -6,7 +6,7 @@ require 'spree/testing_support/extension_rake'
 
 RSpec::Core::RakeTask.new
 
-task default: [:spec] do
+task :default do
   if Dir["spec/dummy"].empty?
     Rake::Task[:test_app].invoke
     Dir.chdir("../../")
