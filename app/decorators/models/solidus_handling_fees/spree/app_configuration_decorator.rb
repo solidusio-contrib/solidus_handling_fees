@@ -1,5 +1,5 @@
 Spree::AppConfiguration.class_eval do
-  Rails.application.config.spree.calculators.add_class('stock_locations')
+  Rails.application.config.spree.calculators.singleton_class.add_class_set('stock_locations')
   Rails.application.config.spree.calculators.stock_locations = [
     Spree::Calculator::Shipping::FlatPercentItemTotal,
     Spree::Calculator::Shipping::FlatRate,
