@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'deface'
 
   s.add_development_dependency 'solidus_frontend'
+  s.add_development_dependency 'solidus_support'
 
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'coffee-rails'
@@ -29,5 +30,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'selenium-webdriver'
+  s.add_development_dependency 'simplecov'
   s.add_development_dependency 'sqlite3'
 end
