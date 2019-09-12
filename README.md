@@ -1,6 +1,8 @@
 Spree::HandlingFees
 =================
 
+[![CircleCI](https://circleci.com/gh/solidusio-contrib/solidus_handling_fees.svg?style=svg)](https://circleci.com/gh/solidusio-contrib/solidus_handling_fees)
+
 Adds Handling Fee functionality to [Spree](http://github.com/spree/spree).
 
 Installation
