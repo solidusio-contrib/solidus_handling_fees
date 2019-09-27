@@ -15,7 +15,7 @@ group :test do
   gem 'rails-controller-testing'
 end
 
-gem 'rake', '< 11.0'
+gem 'rake', '< 14.0'
 gem 'capybara-screenshot', group: :test
 
 gem 'pg'
