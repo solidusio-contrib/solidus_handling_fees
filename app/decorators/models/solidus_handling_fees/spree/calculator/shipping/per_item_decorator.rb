@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Spree::Calculator::Shipping::PerItem.class_eval do
   def compute_shipment(shipment)
     # DD: could probably call compute_from_price here

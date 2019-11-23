@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Deface::Override.new(
   name: 'add_handling_fee_to_order_summary',
   virtual_path: 'spree/checkout/_summary',

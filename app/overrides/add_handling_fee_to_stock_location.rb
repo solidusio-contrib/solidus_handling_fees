@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Deface::Override.new(
   name: 'add_handling_fee_to_stock_location',
   virtual_path: 'spree/admin/stock_locations/_form',

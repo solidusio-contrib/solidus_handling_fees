@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'Checkout', js: true do
@@ -22,7 +24,7 @@ describe 'Checkout', js: true do
   context 'as admin user' do
     stub_authorization!
 
-    it 'should calculate and display handling for one item on payment step and allow full checkout' do
+    it 'calculates and display handling for one item on payment step and allow full checkout' do
       add_to_cart('RoR Mug')
       click_button 'Checkout'
 
@@ -49,7 +51,7 @@ describe 'Checkout', js: true do
     end
   end
 
-  it 'should calculate and display handling for multiple items on payment step and allow full checkout' do
+  it 'calculates and display handling for multiple items on payment step and allow full checkout' do
     add_to_cart('RoR Mug')
     add_to_cart('RoR Mug')
     add_to_cart('RoR Mug')
@@ -68,7 +70,7 @@ describe 'Checkout', js: true do
     expect(current_path).to match(spree.order_path(Spree::Order.last))
   end
 
-  it 'should update the handling fee when cart contents change' do
+  it 'updates the handling fee when cart contents change' do
     add_to_cart('RoR Mug')
     click_button 'Checkout'
 
