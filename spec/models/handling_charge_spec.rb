@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 # describe Spree::Calculator::Shipping::HandlingCharge do
 #   subject { Spree::Calculator::Shipping::HandlingCharge.new }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Spree::Order.class_eval do
   def display_handling_total
     Spree::Money.new(handling_total, currency: currency)
@@ -13,8 +15,10 @@ Spree::Order.class_eval do
   def create_handling_charge!
     shipments.each do |shipment|
       next unless shipment.needs_handling_charge? && shipment.stock_location.calculator
+
       amount = shipment.stock_location.calculator.compute_shipment(shipment)
       next if amount == 0
+
       shipment.adjustments.create!(
         source: shipment.stock_location,
         adjustable: shipment,

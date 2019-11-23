@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Spree::OrderUpdater.class_eval do
   module OverrideOrderUpdater
     def recalculate_adjustments
