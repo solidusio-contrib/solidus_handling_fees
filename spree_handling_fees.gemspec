@@ -22,6 +22,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'generator_spec'
   s.add_development_dependency 'sass-rails'
-  s.add_development_dependency 'solidus_extension_dev_tools'
+  s.add_development_dependency 'solidus_dev_support'
   s.add_development_dependency 'solidus_frontend'
 end
