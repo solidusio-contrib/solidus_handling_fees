@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'solidus_api', solidus_version
   s.add_dependency 'solidus_backend', solidus_version
   s.add_dependency 'solidus_core', solidus_version
+  s.add_dependency 'solidus_support'
 
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'generator_spec'
