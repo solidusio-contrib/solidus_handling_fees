@@ -18,10 +18,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'solidus_api', solidus_version
   s.add_dependency 'solidus_backend', solidus_version
   s.add_dependency 'solidus_core', solidus_version
+  s.add_dependency 'solidus_support'
 
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'generator_spec'
   s.add_development_dependency 'sass-rails'
-  s.add_development_dependency 'solidus_extension_dev_tools'
+  s.add_development_dependency 'solidus_dev_support'
   s.add_development_dependency 'solidus_frontend'
 end
