@@ -1,21 +1,18 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
 gem 'solidus', github: 'solidusio/solidus', branch: branch
 
 # Needed to help Bundler figure out how to resolve dependencies,
-# otherwise it takes forever to resolve them
-if branch == 'master' || Gem::Version.new(branch[1..-1]) >= Gem::Version.new('2.10.0')
-  gem 'rails', '~> 6.0'
-else
-  gem 'rails', '~> 5.2'
-end
+# otherwise it takes forever to resolve them.
+# See https://github.com/bundler/bundler/issues/6677
+gem 'rails', '>0.a'
 
-group :test do
-  gem 'rails-controller-testing'
-end
+# Provides basic authentication functionality for testing parts of your engine
+gem 'solidus_auth_devise'
 
 case ENV['DB']
 when 'mysql'
@@ -26,4 +23,10 @@ else
   gem 'sqlite3'
 end
 
+gem 'rails-controller-testing', group: :test
+
 gemspec
+
+# Use a local Gemfile to include development dependencies that might not be
+# relevant for the project or for other contributors, e.g.: `gem 'pry-debug'`.
+eval_gemfile 'Gemfile-local' if File.exist? 'Gemfile-local'

@@ -1,0 +1,5 @@
+bump:
+  recurse: false
+  file: 'lib/solidus_handling_fees/version.rb'
+  message: Bump SolidusHandlingFees to %{version}
+  tag: true
