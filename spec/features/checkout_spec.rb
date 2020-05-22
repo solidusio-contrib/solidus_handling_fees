@@ -98,8 +98,13 @@ describe 'Checkout', js: true do
 
   def fill_in_address(address)
     fieldname = 'order_bill_address_attributes'
-    fill_in "#{fieldname}_firstname", with: address.first_name
-    fill_in "#{fieldname}_lastname", with: address.last_name
+    if Spree::Config.has_preference?(:use_combined_first_and_last_name_in_address) &&
+        Spree::Config.use_combined_first_and_last_name_in_address
+      fill_in "#{fieldname}_name", with: address.name
+    else
+      fill_in "#{fieldname}_firstname", with: address.first_name
+      fill_in "#{fieldname}_lastname", with: address.last_name
+    end
     fill_in "#{fieldname}_address1", with: address.address1
     fill_in "#{fieldname}_city", with: address.city
     select address.country.name, from: "#{fieldname}_country_id"
@@ -109,9 +114,8 @@ describe 'Checkout', js: true do
   end
 
   def stock_location_address
-    stock_location_address = Spree::Address.new(
-      firstname: 'Testing',
-      lastname: 'Location',
+    stock_location_address = build(
+      :address,
       address1: '3121 W Government Way',
       city: 'Seattle',
       country: Spree::Country.where(name: 'United States of America').first,
@@ -122,9 +126,8 @@ describe 'Checkout', js: true do
   end
 
   def alabama_address
-    alabama_address = Spree::Address.new(
-      firstname: 'John',
-      lastname: 'Doe',
+    stock_location_address = build(
+      :address,
       address1: '143 Swan Street',
       city: 'Montgomery',
       country: Spree::Country.where(name: 'United States of America').first,
