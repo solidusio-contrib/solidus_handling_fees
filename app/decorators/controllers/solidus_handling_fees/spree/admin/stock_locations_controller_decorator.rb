@@ -6,7 +6,7 @@ module Spree
       before_action :load_data, except: [:index]
 
       def load_data
-        @calculators = StockLocation.calculators.sort_by(&:name)
+        @calculators = Rails.application.config.spree.calculators.stock_locations
       end
     end
   end
